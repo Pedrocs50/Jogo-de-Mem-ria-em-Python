@@ -13,7 +13,7 @@ COR_BACKGROUND = "#343a40"
 COR_LETRA = "white"
 FONT_STYLE = ('Arial', 12, "bold")
 FONT_STYLE_DERROTA = ('Arial', 20, "bold")
-TENTATIVAS_MAX = 10
+TENTATIVAS_MAX = 20
 
 # Função para criar o grid de cartas com imagens
 def create_card_grid():
@@ -79,10 +79,12 @@ def verificar_cartoes():
     if grid[linha1][col1] == grid[linha2][col2]:
         cartao_correspondentes.append((linha1, col1))
         cartao_correspondentes.append((linha2, col2))
+        
     else:
         cartoes[linha1][col1].configure(image="", text="")
         cartoes[linha2][col2].configure(image="", text="")
-        numero_tentativas += 1
+        
+    numero_tentativas += 1
 
     cartao_revelar.clear()
     label_tentativas.configure(text=f'Tentativas: {numero_tentativas}/{TENTATIVAS_MAX}')
